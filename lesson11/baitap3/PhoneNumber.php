@@ -9,32 +9,43 @@
 </head>
 <body>
 <form method="post">
-    <textarea id="input">
+    <textarea style="background: #8E9CB2 border-box" name="input">
     </textarea>
     <br>
-    <br>
-   <strong>Viettel</strong><p id="viettel"></p>
-    <strong>Mobiphone</strong><p id="mobi"></p>
-    <strong>Vinaphone</strong><p id="vina"></p>
+    <button type="submit">Classify</button>
 </form>
 <?php
-function getCategory(){
+    if($_SERVER['REQUEST_METHOD']=="POST") {
+        $str = $_REQUEST['input'];
+        $viettel = [];
+        $mobi = [];
+        $vina = [];
+        $arr = explode(',', $str);
+        for ($i = 0; $i < count($arr); $i++) {
+            $test=substr($arr[$i],0,-7);
+            if ($test=== "090") {
+                array_push($mobi, $arr[$i]);
+            } else if ($test === "091") {
+                array_push($vina, $arr[$i]);
 
-
-
-$result=documentgetById.innerHTML.value;
-$arr=explode(',',documentgetbyID('input');
-$viettel=[];
-$mobiphone=[];
-$vinaphone=[];
-for($i=0;$i<count($arr);$i++){
-    for($j=0;$j<4;$j++){
-    if($arr[$i][$j])
+            } else {
+                array_push($viettel, $arr[$i]);
+            }
+        }
+    }
+    echo "Viettel: ";
+    for ($i=0;$i<count($viettel);$i++){
+        echo $viettel[$i].';';
+    }
+    echo "<br>";
+    echo "Mobi: ";
+    for ($i=0;$i<count($mobi);$i++){
+        echo $mobi[$i].';';
+    }echo "<br>";
+    echo "Mobi: ";
+    for ($i=0;$i<count($vina);$i++){
+        echo $vina[$i].';';
 }
-
-}
-
 ?>
-
 </body>
 </html>

@@ -3,14 +3,11 @@
 
 class Stack
 {
-
     private $stack;
-
     public function __construct()
     {
         $this->stack=array();
     }
-
     public function binaryConvert($number)
     {
         $i=0;
@@ -20,7 +17,6 @@ class Stack
             $number=floor($number/2);
         }return $this->stack;
     }
-
     public function convert()
     {
         $binary=implode('',array_reverse($this->stack));
