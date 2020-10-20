@@ -21,3 +21,8 @@ function swap_pos($data, $left, $right)
     $data[$left] = $backup_old_data_right_value;
     return $data;
 }
+$test=array(1, 9, 4.5, 6.6, 5.7, -4.5);
+echo "Origin array :\n";
+echo implode(',',$test);
+echo "\nSorted array :\n";
+echo implode(',',selectionSort($test));
