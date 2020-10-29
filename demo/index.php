@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>DANH SÁCH HỌC SINH</h1>
+<h1>STUDENT DATABASE</h1>
 <?php
 include 'DBConnect.php';
 $db=new DBConnect();
@@ -18,6 +18,7 @@ $stmt=$conn->prepare($query);
 $stmt->execute();
 $result= $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<a href="add.php">Addition</a>
 <table style="border: 1px solid black">
     <tr>
         <td>STT</td>
@@ -32,13 +33,14 @@ $result= $stmt->fetchAll(PDO::FETCH_ASSOC);
         <td><?php echo $value['name']; ?></td>
         <td><?php echo $value['dob']; ?></td>
         <td><?php echo $value['address']; ?></td>
+        <td></td>
         <td>
-            <a href="delete.php">DELETE</a>
-            <a href="edit.php ">EDIT</a>
+            <a href="delete.php?id=<?php echo $value['id']; ?>">DELETE</a>
+            <a href="edit.php?id=<?php echo $value['id']; ?> ">EDIT</a>
         </td>
     </tr>
     <?php endforeach; ?>
 </table>
-<a href="add.php">THÊM NGUOI</a>
+
 </body>
 </html>

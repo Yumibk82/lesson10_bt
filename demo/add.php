@@ -36,15 +36,21 @@
 <?php
 include 'DBConnect.php';
 function add($_name,$_dob,$_address){
-    $db = new DBConnect();
-    $conn = $db->connect();
-    $query = "INSERT INTO students(name,dob,address) VALUES (:name,:dob,:address)";
-    $stmt = $conn->prepare($query);
+    $db = new DBConnect();//tao ra 1 doi tuong co 3 thuoc tinh
+    $conn = $db->connect();//truyen 3 thuoc tinh o tren de khoi tao mot doi tuong PDO
+    $query = "INSERT INTO students(name,dob,address) VALUES (:name,:dob,:address)";//bien query = lenh truyen gia tri vao bang
+    $stmt = $conn->prepare($query);//convert chuoi thanh doi tuong cua lop PDO de co the su dung cac phuong thuc cua PDO
+    echo "<pre>";
+        var_dump($stmt);
     $stmt->bindParam(':name',$_name);
     $stmt->bindParam(':dob',$_dob);
     $stmt->bindParam(':address',$_address);
-    $data = array("name"=>$_name,"dob"=>$_dob,"address"=>$_address);
-    $stmt->execute($data);
+//    $data = array("name"=>$_name,"dob"=>$_dob,"address"=>$_address);
+    echo "<pre>";
+    var_dump($stmt);
+    $stmt->execute();
+    echo "<pre>";
+//    var_dump($data);
 }
 if (isset($_POST['add'])){
     $name = $_POST['name'];
@@ -53,6 +59,7 @@ if (isset($_POST['add'])){
     add($name,$dob,$address);
     header("location:index.php");
 }
+
 ?>
 </body>
 </html>
