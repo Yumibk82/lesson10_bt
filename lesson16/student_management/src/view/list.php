@@ -21,6 +21,7 @@
             <th>dob</th>
             <th>add</th>
             <th>gender</th>
+            <th>image</th>
             <th colspan="2">action</th>
         </tr>
         <?php if (empty($students)): ?>
@@ -35,6 +36,7 @@
             <td><?php echo $student->getDob() ?></td>
             <td><?php echo $student->getAddress() ?></td>
             <td><?php echo $student->getGender() ?></td>
+            <td><img style="width: 100px;height: 100px" src="<?php echo $student->getImage() ?>"></td>
             <td><a class="btn btn-success" href="index.php?page=edit&id=<?php echo $student->getId() ?>">Edit</a> </td>
             <td><a class="btn btn-danger" href="index.php?page=delete&id=<?php echo $student->getId() ?>">Delete</a> </td>
         </tr>

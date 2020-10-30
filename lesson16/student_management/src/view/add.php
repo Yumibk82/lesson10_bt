@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="" method="post">
+<form method="post" enctype="multipart/form-data">
     Name:<input type="text" name="name">
     dob:<input type="date" name="dob">
     address:<input type="text" name="address">
@@ -20,6 +20,7 @@
         <option>1</option>
         <option>2</option>
     </select>
+    image:<input type="file" name="image">
     <input type="submit" value="Add" class="btn btn-success">
 </form>
 

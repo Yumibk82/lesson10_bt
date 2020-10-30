@@ -16,7 +16,7 @@ class StudentController
     public function show()
     {
         $students = $this->studentManager->getAll();
-        include_once "src/view/list.php";
+        include_once "src/view/list.php";//NHUNG mang student vao duong dan src/view/list
     }
 
     public function add()
@@ -24,11 +24,19 @@ class StudentController
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
             include_once "src/view/add.php";
         } else {
+            $file = $_FILES['image']['tmp_name'];
+            $path = 'uploads/'.$_FILES['image']['name'];
+            if (move_uploaded_file($file,$path)){
+                echo 'success';
+            } else {
+                echo 'fail';
+            }
+            $image = $path == 'uploads/'?'uploads/default.png':$path;
             $name = $_REQUEST['name'];
             $dob = $_REQUEST['dob'];
             $address = $_REQUEST['address'];
             $gender = $_REQUEST['gender'];
-            $student = new Student($name,$dob,$address,$gender);
+            $student = new Student($name,$dob,$address,$gender,$image);
             $this->studentManager->addStudent($student);
             header('location:index.php');
         }
@@ -46,7 +54,15 @@ class StudentController
             $dob = $_REQUEST['dob'];
             $address = $_REQUEST['address'];
             $gender = $_REQUEST['gender'];
-            $student = new Student($name,$dob,$address,$gender);
+            $file = $_FILES['image']['tmp_name'];
+            $path = 'uploads/'.$_FILES['image']['name'];
+            if (move_uploaded_file($file,$path)){
+                echo 'success';
+            } else {
+                echo 'fail';
+            }
+            $image = $path == 'uploads/'?'uploads/default.png':$path;
+            $student = new Student($name,$dob,$address,$gender,$image);
             $student->setId($id);
             $this->studentManager->editStudent($student);
             header('location:index.php');

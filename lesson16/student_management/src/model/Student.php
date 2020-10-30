@@ -12,12 +12,30 @@ class Student
     protected $address;
     protected $gender;
 
-    public function __construct($name, $dob, $address, $gender)
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+    protected $image;
+
+    public function __construct($name, $dob, $address, $gender,$image)
     {
         $this->name = $name;
         $this->dob = $dob;
         $this->address = $address;
         $this->gender = $gender;
+        $this->image = $image;
     }
     public function getId()
     {
@@ -61,6 +79,4 @@ class Student
     {
         $this->gender = $gender;
     }
-
-
 }

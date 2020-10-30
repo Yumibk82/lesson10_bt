@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     Name:<input type="text" name="name" value="<?php echo $student['name'] ?>">
     dob:<input type="date" name="dob" value="<?php echo $student['DOB'] ?>">
     address:<input type="text" name="address" value="<?php echo $student['add'] ?>">
@@ -20,6 +20,7 @@
         <option>1</option>
         <option>2</option>
     </select>
+    img: <input type="file" name="image">
     <input type="submit" value="Edit" class="btn btn-success">
 </form>
 
